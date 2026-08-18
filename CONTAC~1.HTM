@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Sarwar Shuvo</title>
+  <meta name="description" content="Get in touch with Sarwar Shuvo — book a free marketing audit, ask a question, or say hello." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Bebas+Neue&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #eef3fb;
+      --bg-soft: rgba(255,255,255,0.35);
+      --card: rgba(255,255,255,0.45);
+      --card-2: rgba(255,255,255,0.35);
+      --text: #14213d;
+      --muted: #46546f;
+      --line: rgba(255,255,255,0.6);
+      --accent: #1e3a6b;
+      --accent-2: #3f72c4;
+      --accent-grad: linear-gradient(120deg, #1e3a6b, #3f72c4);
+      --radius: 20px;
+      --maxw: 1140px;
+      --shadow: 0 8px 32px rgba(20,33,61,0.16), inset 0 1px 0 rgba(255,255,255,0.65);
+      --glass-blur: blur(18px) saturate(165%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-color: #f5f8fc;
+      background-image:
+        radial-gradient(45rem 40rem at 8% 5%, rgba(63,114,196,0.16), transparent 58%),
+        radial-gradient(40rem 38rem at 95% 12%, rgba(120,80,220,0.11), transparent 58%),
+        radial-gradient(45rem 42rem at 80% 75%, rgba(0,180,216,0.10), transparent 58%),
+        radial-gradient(42rem 40rem at 15% 92%, rgba(30,58,107,0.12), transparent 58%);
+      background-attachment: fixed;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background-image:
+        radial-gradient(18rem 18rem at 30% 40%, rgba(255,255,255,0.4), transparent 60%),
+        radial-gradient(22rem 22rem at 70% 60%, rgba(200,222,255,0.2), transparent 60%);
+      animation: drift 20s ease-in-out infinite alternate;
+    }
+    @keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(-30px,-20px,0); } }
+    h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    section { padding: 96px 0; }
+    .accent-text { background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    header, .pill, .stat, .skill-card, .service, .work-card, .quote, .contact-box, .tag, .btn-outline, .about-photo, .services {
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+    }
+    .stat, .skill-card, .service, .work-card, .quote, .contact-box, .about-photo {
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .rotate-word { display: inline-block; transition: opacity .35s ease, transform .35s ease; }
+    .rotate-word.swap { opacity: 0; transform: translateY(8px); }
+
+    /* ===== NAV ===== */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.45);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 24px rgba(20,33,61,0.08);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .logo { display: inline-flex; align-items: center; gap: 10px; font-family: 'Plus Jakarta Sans'; font-weight: 800; font-size: 20px; }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+      background: var(--accent-grad); color: #fff; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; letter-spacing: -0.02em; box-shadow: 0 4px 14px rgba(30,58,107,0.35);
+    }
+    .logo .accent-name { background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn {
+      display: inline-block; padding: 12px 24px; border-radius: 999px;
+      background: var(--accent-grad); color: #fff; font-weight: 600; font-size: 15px;
+      border: none; cursor: pointer; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 24px rgba(108,92,231,0.35);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(108,92,231,0.5); }
+    .btn-outline { background: rgba(255,255,255,0.4); color: var(--text); border: 1px solid var(--line); box-shadow: 0 4px 20px rgba(20,33,61,0.10), inset 0 1px 0 rgba(255,255,255,0.7); }
+    .btn-outline:hover { background: rgba(255,255,255,0.7); }
+    .nav-links .btn {
+      background: rgba(30,58,107,0.16);
+      color: var(--accent);
+      border: 1px solid rgba(255,255,255,0.75);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: 0 6px 20px rgba(20,33,61,0.14), inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+    .nav-links .btn:hover { background: rgba(30,58,107,0.26); color: var(--accent); transform: translateY(-2px); }
+    .menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 26px; cursor: pointer; }
+
+    /* ===== SECTION HEADINGS ===== */
+    .section-head { max-width: 640px; margin-bottom: 56px; }
+    .section-head .eyebrow { color: var(--accent-2); font-weight: 600; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-head h2 { font-size: clamp(30px, 4vw, 44px); margin-bottom: 16px; }
+    .section-head p { color: var(--muted); font-size: 17px; }
+    .section-head h1 { font-size: clamp(38px, 6vw, 64px); margin-bottom: 16px; }
+
+    /* ===== CONTACT ===== */
+    .contact { background: var(--bg-soft); }
+    .contact-box { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 56px 40px; text-align: center; max-width: 760px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: var(--shadow); }
+    .contact-box h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 16px; }
+    .contact-box p { color: var(--muted); font-size: 17px; margin-bottom: 32px; }
+    .contact-methods { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== CONTACT PAGE (dedicated /contact page) ===== */
+    .contact-hero { padding-top: 56px; padding-bottom: 96px; }
+    .contact-page-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
+
+    /* ===== Left: audit pitch ===== */
+    .audit-copy { max-width: 460px; }
+    .audit-copy .eyebrow { color: var(--accent-2); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; }
+    .audit-copy h1 {
+      font-family: 'Bebas Neue', 'Plus Jakarta Sans', sans-serif; text-transform: uppercase; font-weight: 400;
+      color: var(--accent); font-size: clamp(42px, 5.5vw, 58px); line-height: 0.98; margin-bottom: 24px;
+    }
+    .audit-copy > p { color: var(--muted); font-size: 16px; line-height: 1.65; margin-bottom: 36px; }
+    .audit-list { list-style: none; display: flex; flex-direction: column; gap: 24px; margin-bottom: 36px; }
+    .audit-list li { position: relative; padding-left: 20px; }
+    .audit-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); }
+    .audit-list li strong { display: block; color: var(--text); font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .audit-list li span { display: block; color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+    .audit-direct { font-size: 14px; color: var(--muted); }
+    .audit-direct a { color: var(--accent); font-weight: 600; }
+    .audit-direct a:hover { text-decoration: underline; }
+    @media (max-width: 880px) {
+      .contact-hero { padding-top: 40px; padding-bottom: 64px; }
+      .contact-page-grid { grid-template-columns: 1fr; }
+      .audit-copy { max-width: none; }
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-form-wrap { background: #fff; border-radius: 20px; border: 1px solid #e2e8f5; box-shadow: var(--shadow); padding: 40px; max-width: 640px; margin: 0 auto; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .form-group label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
+    .form-group label .req { color: #e11d48; }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 14px 16px; border-radius: 12px; border: 1.5px solid #c9d3e8; background: #fff;
+      font-family: inherit; font-size: 15px; color: var(--text); outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--accent-2); box-shadow: 0 0 0 3px rgba(63,114,196,0.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      width: 100%; padding: 16px; border-radius: 999px; background: var(--accent-grad); color: #fff;
+      font-weight: 700; font-size: 16px; border: none; cursor: pointer; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 24px rgba(30,58,107,0.3);
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(30,58,107,0.4); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-status { margin-top: 14px; font-size: 14px; text-align: center; }
+    .form-status.success { color: #16a34a; }
+    .form-status.error { color: #dc2626; }
+    @media (max-width: 560px) {
+      .contact-form-wrap { padding: 28px 22px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ===== CTA BLOCKS (dark, full-bleed) ===== */
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; border-radius: 999px;
+      background: #fff; color: #14213d; font-weight: 700; font-size: 15px; border: none; cursor: pointer;
+      transition: transform .2s, box-shadow .2s; box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,0.35); }
+    .cta2 { background: #0c1c3a; padding: 90px 0; }
+    .cta2 .container { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .cta2 h2 {
+      font-family: 'Playfair Display', serif; font-weight: 600; color: #fff;
+      font-size: clamp(30px, 4.4vw, 46px); line-height: 1.25; max-width: 620px; margin: 0;
+    }
+    .cta2 .cta2-right { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+    .cta2 .cta2-right a.cta-btn { white-space: nowrap; }
+    .cta2 .cta2-email { color: rgba(255,255,255,0.65); font-size: 14px; }
+    .cta2 .cta2-email a { color: rgba(255,255,255,0.85); text-decoration: underline; }
+    @media (max-width: 700px) {
+      .cta2 { padding: 56px 0; }
+      .cta2 .container { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ===== FOOTER ===== */
+    footer { border-top: 1px solid var(--line); padding: 40px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 14px; }
+    .socials { display: flex; gap: 18px; }
+    .socials a { color: var(--muted); transition: color .2s; }
+    .socials a:hover { color: var(--text); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 880px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      section { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="logo"><span class="logo-mark">SS</span>Sarwar <span class="accent-name">Shuvo</span></a>
+      <nav class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#tools">Tools</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#certificates">Certificates</a>
+        <a href="index.html#achievements">Achievements</a>
+        <a href="#form" class="btn">Let's talk</a>
+      </nav>
+      <button class="menu-toggle" onclick="document.querySelector('.nav-links').style.display = (document.querySelector('.nav-links').style.display==='flex'?'none':'flex'); document.querySelector('.nav-links').style.position='absolute'; document.querySelector('.nav-links').style.flexDirection='column'; document.querySelector('.nav-links').style.top='70px'; document.querySelector('.nav-links').style.right='24px'; document.querySelector('.nav-links').style.background='var(--card)'; document.querySelector('.nav-links').style.padding='20px'; document.querySelector('.nav-links').style.borderRadius='12px'; document.querySelector('.nav-links').style.border='1px solid var(--line)';">☰</button>
+    </div>
+  </header>
+
+  <!-- ===================== CONTACT HERO + FORM ===================== -->
+  <!-- EDIT: Get your free Web3Forms access key at https://web3forms.com (enter sjshuvo00@gmail.com,
+       they email the key instantly, no signup needed) and paste it below in place of the access_key value -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="contact-page-grid" id="form">
+        <!-- ===== Left: audit pitch ===== -->
+        <div class="audit-copy">
+          <div class="eyebrow">Contact / Free Audit</div>
+          <h1>Let's talk about your growth.</h1>
+          <p>Fill in the form and I'll review your current marketing, identify the biggest opportunities, and come back to you with a clear plan — at no cost.</p>
+          <ul class="audit-list">
+            <li><strong>Deep audit</strong><span>I review your website, ads, analytics, and content before the call.</span></li>
+            <li><strong>No sales pressure</strong><span>If I can't add value, I'll tell you.</span></li>
+            <li><strong>Fast response</strong><span>I respond within 1 business day.</span></li>
+          </ul>
+          <div class="audit-direct">
+            Or reach me directly:
+            <a href="mailto:sjshuvo00@gmail.com">Email</a> ·
+            <a href="https://wa.me/8801939007480" target="_blank" rel="noopener">WhatsApp</a> ·
+            <a href="https://www.linkedin.com/in/sarwar-shuvo/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- ===== Contact form ===== -->
+        <div>
+          <form class="contact-form-wrap" id="contactForm">
+            <input type="hidden" name="access_key" value="f0378ec7-9c44-48a6-aaa0-72ebce285329">
+            <input type="hidden" name="subject" value="New inquiry from Sarwar Shuvo's contact page">
+            <input type="checkbox" name="botcheck" style="display:none">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Name <span class="req">*</span></label>
+                <input type="text" name="name" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label>Email <span class="req">*</span></label>
+                <input type="email" name="email" placeholder="you@company.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Company</label>
+              <input type="text" name="company" placeholder="Your company name">
+            </div>
+
+            <div class="form-group">
+              <label>Service Interested In</label>
+              <select name="service">
+                <option value="">Select a service</option>
+                <option>Google Ads</option>
+                <option>Meta Ads</option>
+                <option>SEO</option>
+                <option>Generative Engine Optimisation (GEO)</option>
+                <option>Web Development</option>
+                <option>CRO</option>
+                <option>Email Marketing</option>
+                <option>Marketing Automation</option>
+                <option>WhatsApp Marketing</option>
+                <option>Analytics & Tracking</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Message <span class="req">*</span></label>
+              <textarea name="message" placeholder="Tell me about your business and what you need help with..." required></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Send Message</button>
+            <div class="form-status" id="formStatus"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="cta2">
+    <div class="container">
+      <h2>Ready to turn marketing into a steady stream of customers?</h2>
+      <div class="cta2-right">
+        <a href="https://wa.me/8801939007480" target="_blank" rel="noopener" class="cta-btn">Book a Free Audit →</a>
+        <div class="cta2-email">Or email <a href="mailto:sjshuvo00@gmail.com">sjshuvo00@gmail.com</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Sarwar Shuvo. All rights reserved.</div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/sarwar-shuvo/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#">Twitter/X</a>
+        <a href="#">Instagram</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Contact form: submit via Web3Forms (no backend needed) =====
+    (function () {
+      var form = document.getElementById('contactForm');
+      var status = document.getElementById('formStatus');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var accessKey = form.querySelector('[name="access_key"]').value;
+        if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
+          status.textContent = 'Form not connected yet — add your Web3Forms access key in contact.html.';
+          status.className = 'form-status error';
+          return;
+        }
+        var btn = form.querySelector('.form-submit');
+        btn.disabled = true; btn.textContent = 'Sending…';
+        status.textContent = ''; status.className = 'form-status';
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (data.success) {
+              status.textContent = "Thanks! I'll get back to you within 24 hours.";
+              status.className = 'form-status success';
+              form.reset();
+            } else {
+              status.textContent = data.message || 'Something went wrong. Please email me directly.';
+              status.className = 'form-status error';
+            }
+          })
+          .catch(function () {
+            status.textContent = 'Something went wrong. Please email me directly.';
+            status.className = 'form-status error';
+          })
+          .finally(function () {
+            btn.disabled = false; btn.textContent = 'Send Message';
+          });
+      });
+    })();
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(function(link){
+      link.addEventListener('click', function(){
+        if (window.innerWidth <= 880) {
+          document.querySelector('.nav-links').style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
