@@ -435,6 +435,8 @@
       .about-text p { font-size: 14px; }
     }
 
+  
+    .about-photo, .about-photo img { opacity: 1 !important; transform: none !important; }
   </style>
 </head>
 <body>
@@ -992,7 +994,7 @@
     document.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
     // scroll reveal
-    var sel = '.section-head, .service, .work-card, .cert-card, .ach-card, .process-step, .exp-item, .quote, .contact-box, .about-photo, .about-text, .cta1 .container, .cta2 .container';
+    var sel = '.section-head, .service, .work-card, .cert-card, .ach-card, .process-step, .exp-item, .quote, .contact-box, .about-text, .cta1 .container, .cta2 .container';
     var items = [].slice.call(document.querySelectorAll(sel));
     items.forEach(function (el) { el.classList.add('reveal'); });
     // stagger children inside grids
