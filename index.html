@@ -133,9 +133,11 @@
     .about-photo {
       aspect-ratio: 4/5; border-radius: var(--radius); background: linear-gradient(135deg, #eef2f9, #dde6f5);
       border: 1px solid var(--line); box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: 15px; text-align: center; padding: 24px; position: relative; overflow: hidden;
+      color: var(--muted); font-size: 15px; text-align: center; padding: 0; position: relative; overflow: hidden;
     }
-    .about-photo::after { content: '📷 Replace with your photo'; }
+    .about-photo::after { content: ''; }
+    .ph-mobile { display: none; }
+    .ph-desktop { display: block; }
     .about-text p { color: var(--muted); margin-bottom: 18px; font-size: 16.5px; }
     .about-text strong { color: var(--text); }
 
@@ -390,6 +392,49 @@
       .marquee-track { gap: 10px; }
       .marquee + .marquee { margin-top: 10px; }
     }
+  
+    /* ===== Modern motion layer (scroll reveal + polish) ===== */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1); will-change: opacity, transform; }
+      .reveal.reveal-in { opacity: 1; transform: none; }
+      .hero .pill { animation: heroUp .7s .05s both cubic-bezier(.22,.61,.36,1); }
+      .hero h1 { animation: heroUp .8s .15s both cubic-bezier(.22,.61,.36,1); }
+      .hero p.lead { animation: heroUp .8s .28s both cubic-bezier(.22,.61,.36,1); }
+      .hero .hero-cta { animation: heroUp .8s .40s both cubic-bezier(.22,.61,.36,1); }
+      .hero .stats { animation: heroUp .8s .52s both cubic-bezier(.22,.61,.36,1); }
+      @keyframes heroUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+    }
+    #scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 100; background: var(--accent-grad); box-shadow: 0 0 10px rgba(63,114,196,0.5); transition: width .1s linear; }
+    header { transition: box-shadow .3s ease, background .3s ease; }
+    header.scrolled { box-shadow: 0 10px 34px rgba(20,33,61,0.14); }
+    .cert-thumb img { transition: transform .55s cubic-bezier(.22,.61,.36,1); }
+    .cert-card:hover .cert-thumb img { transform: scale(1.06); }
+    .work-card .work-thumb { transition: transform .55s cubic-bezier(.22,.61,.36,1); }
+    .work-card:hover .work-thumb { transform: scale(1.05); }
+    .about-photo img { transition: transform .6s cubic-bezier(.22,.61,.36,1); }
+    .about-photo:hover img { transform: scale(1.04); }
+
+  
+    /* ===== About section: mobile-friendly layout ===== */
+    @media (max-width: 880px) {
+      #about { padding-top: 56px; padding-bottom: 56px; }
+      .about-grid { grid-template-columns: 1fr; gap: 24px; }
+      .about-photo { aspect-ratio: 1 / 1; max-width: 280px; margin: 0 auto 6px; border-radius: 50%; }
+      .ph-desktop { display: none; }
+      .ph-mobile { display: block; }
+      .about-text { text-align: left; }
+      .about-text .section-head { margin-bottom: 14px !important; }
+      .about-text .section-head h2 { font-size: 26px; }
+      .about-text p { font-size: 15px; line-height: 1.6; margin-bottom: 13px; }
+      .about-text .tags { justify-content: flex-start; gap: 8px; margin-top: 16px; }
+      .about-text .tag { font-size: 12px; padding: 5px 12px; }
+    }
+    @media (max-width: 500px) {
+      .about-photo { max-width: 240px; }
+      .about-text .section-head h2 { font-size: 22px; }
+      .about-text p { font-size: 14px; }
+    }
+
   </style>
 </head>
 <body>
@@ -441,7 +486,7 @@
   <section id="about">
     <div class="container">
       <div class="about-grid">
-        <div class="about-photo"></div>
+        <div class="about-photo"><img class="ph-desktop" src="assets/profile.png" alt="Sarwar Shuvo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;"><img class="ph-mobile" src="assets/profile-circle.png" alt="Sarwar Shuvo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;"></div>
         <div class="about-text">
           <div class="section-head" style="margin-bottom:24px">
             <div class="eyebrow">About me</div>
@@ -931,5 +976,54 @@
       });
     });
   </script>
+  <script>
+  (function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // scroll progress bar + nav elevate
+    var bar = document.createElement('div'); bar.id = 'scroll-progress'; document.body.appendChild(bar);
+    var hdr = document.querySelector('header');
+    function onScroll() {
+      var st = window.pageYOffset || document.documentElement.scrollTop;
+      var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      bar.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+      if (hdr) hdr.classList.toggle('scrolled', st > 10);
+    }
+    document.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    // scroll reveal
+    var sel = '.section-head, .service, .work-card, .cert-card, .ach-card, .process-step, .exp-item, .quote, .contact-box, .about-photo, .about-text, .cta1 .container, .cta2 .container';
+    var items = [].slice.call(document.querySelectorAll(sel));
+    items.forEach(function (el) { el.classList.add('reveal'); });
+    // stagger children inside grids
+    document.querySelectorAll('.services-grid, .work-grid, .cert-grid, .ach-grid, .process-grid, .testimonial-grid').forEach(function (grid) {
+      [].slice.call(grid.children).forEach(function (ch, i) {
+        if (ch.classList.contains('reveal')) ch.style.transitionDelay = ((i % 4) * 0.08) + 's';
+      });
+    });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('reveal-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      items.forEach(function (el) { io.observe(el); });
+    } else {
+      items.forEach(function (el) { el.classList.add('reveal-in'); });
+    }
+
+    // count-up for hero stats
+    var nums = document.querySelectorAll('.stat .num');
+    function countUp(el) {
+      var txt = el.textContent.trim();
+      var m = txt.match(/^(\d+)(.*)$/);
+      if (!m) return;
+      var target = parseInt(m[1], 10), tail = m[2], dur = 1100, t0 = null;
+      function step(ts) { if (!t0) t0 = ts; var p = Math.min((ts - t0) / dur, 1);
+        el.textContent = Math.floor(p * target) + tail; if (p < 1) requestAnimationFrame(step); else el.textContent = txt; }
+      requestAnimationFrame(step);
+    }
+    setTimeout(function () { nums.forEach(countUp); }, 650);
+  })();
+  </script>
+
 </body>
 </html>

@@ -208,6 +208,28 @@
       .menu-toggle { display: block; }
       section { padding: 64px 0; }
     }
+  
+    /* ===== Modern motion layer (scroll reveal + polish) ===== */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1); will-change: opacity, transform; }
+      .reveal.reveal-in { opacity: 1; transform: none; }
+      .hero .pill { animation: heroUp .7s .05s both cubic-bezier(.22,.61,.36,1); }
+      .hero h1 { animation: heroUp .8s .15s both cubic-bezier(.22,.61,.36,1); }
+      .hero p.lead { animation: heroUp .8s .28s both cubic-bezier(.22,.61,.36,1); }
+      .hero .hero-cta { animation: heroUp .8s .40s both cubic-bezier(.22,.61,.36,1); }
+      .hero .stats { animation: heroUp .8s .52s both cubic-bezier(.22,.61,.36,1); }
+      @keyframes heroUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+    }
+    #scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 100; background: var(--accent-grad); box-shadow: 0 0 10px rgba(63,114,196,0.5); transition: width .1s linear; }
+    header { transition: box-shadow .3s ease, background .3s ease; }
+    header.scrolled { box-shadow: 0 10px 34px rgba(20,33,61,0.14); }
+    .cert-thumb img { transition: transform .55s cubic-bezier(.22,.61,.36,1); }
+    .cert-card:hover .cert-thumb img { transform: scale(1.06); }
+    .work-card .work-thumb { transition: transform .55s cubic-bezier(.22,.61,.36,1); }
+    .work-card:hover .work-thumb { transform: scale(1.05); }
+    .about-photo img { transition: transform .6s cubic-bezier(.22,.61,.36,1); }
+    .about-photo:hover img { transform: scale(1.04); }
+
   </style>
 </head>
 <body>
