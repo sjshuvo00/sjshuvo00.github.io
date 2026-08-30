@@ -184,12 +184,14 @@
     /* ===== SERVICES ===== */
     .services { background: var(--bg-soft); }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .service { position: relative; overflow: hidden; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; min-height: 200px; display: flex; flex-direction: column; box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; }
+    .service { position: relative; overflow: hidden; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 28px 26px; min-height: 210px; display: flex; flex-direction: column; box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; }
     .service::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent-grad); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
     .service:hover { transform: translateY(-6px); box-shadow: 0 26px 54px rgba(20,33,61,0.18); }
     .service:hover::before { transform: scaleX(1); }
-    .service .num { font-family: 'Plus Jakarta Sans'; font-weight: 700; font-size: 14px; letter-spacing: 0.14em; color: var(--accent-2); margin-bottom: 22px; }
-    .service h3 { font-size: 21px; margin-bottom: 10px; }
+    .service .svc-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 25px; background: linear-gradient(135deg, rgba(30,58,107,0.12), rgba(63,114,196,0.14)); border: 1px solid var(--line); margin-bottom: 18px; transition: transform .25s ease; }
+    .service:hover .svc-icon { transform: scale(1.08) rotate(-4deg); }
+    .service .num { position: absolute; top: 20px; right: 24px; font-family: 'Plus Jakarta Sans'; font-weight: 800; font-size: 46px; line-height: 1; color: rgba(30,58,107,0.07); letter-spacing: 0; }
+    .service h3 { font-size: 20px; margin-bottom: 10px; }
     .service p { color: var(--muted); font-size: 15px; }
     .service .arrow { position: absolute; bottom: 22px; right: 24px; color: var(--accent); font-size: 18px; opacity: .7; transition: transform .2s, opacity .2s; }
     .service:hover .arrow { transform: translate(3px,-3px); opacity: 1; }
@@ -375,8 +377,8 @@
       .about-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      .service { padding: 16px; min-height: 0; }
-      .service .num { font-size: 12px; margin-bottom: 8px; }
+      .service { padding: 18px 16px; min-height: 0; }
+      .service .num { font-size: 34px; top: 12px; right: 14px; } .service .svc-icon { width: 40px; height: 40px; border-radius: 11px; font-size: 20px; margin-bottom: 12px; }
       .service h3 { font-size: 16px; margin-bottom: 6px; }
       .service p { font-size: 13px; line-height: 1.45; }
       .service .arrow { bottom: 12px; right: 14px; font-size: 15px; }
@@ -612,18 +614,18 @@
         <p>Flexible engagements: one-off projects, monthly retainers, or consulting.</p>
       </div>
       <div class="services-grid">
-        <div class="service"><div class="num">01</div><h3>Google Ads</h3><p>Search, Shopping, and Performance Max campaigns built for measurable ROI.</p></div>
-        <div class="service"><div class="num">02</div><h3>Meta Ads</h3><p>Full-funnel Facebook and Instagram advertising from cold audiences to loyal customers.</p></div>
-        <div class="service"><div class="num">03</div><h3>Automation</h3><p>Marketing automation and workflows that nurture leads and save hours on repetitive work.</p></div>
-        <div class="service"><div class="num">04</div><h3>Email Marketing</h3><p>Automated sequences and broadcast campaigns that turn subscribers into revenue.</p></div>
-        <div class="service"><div class="num">05</div><h3>WhatsApp Marketing</h3><p>Broadcasts, chatbots, and automated flows on WhatsApp that drive fast replies and sales.</p></div>
-        <div class="service"><div class="num">06</div><h3>SEO</h3><p>Build the organic search presence that drives qualified traffic and compounds over time.</p></div>
-        <div class="service"><div class="num">07</div><h3>Generative Engine Optimisation</h3><p>Appear in ChatGPT, Perplexity, and Google AI Overviews, not just traditional search.</p></div>
-        <div class="service"><div class="num">08</div><h3>AI Search Optimisation</h3><p>Get cited by AI answer engines as the authority in your space.</p></div>
-        <div class="service"><div class="num">09</div><h3>Web Development</h3><p>Performance-first, SEO-ready websites built to rank and convert.</p></div>
-        <div class="service"><div class="num">10</div><h3>CRO</h3><p>Convert more of the traffic you already have. The highest-ROI investment you can make.</p></div>
-        <div class="service"><div class="num">11</div><h3>Analytics & Tracking</h3><p>Know exactly what's driving your growth with accurate attribution across all channels.</p></div>
-        <div class="service"><div class="num">12</div><h3>Content Marketing</h3><p>Strategic content that builds authority, earns backlinks, and fuels both SEO and GEO growth.</p></div>
+        <div class="service"><div class="svc-icon">🎯</div><div class="num">01</div><h3>Google Ads</h3><p>Search, Shopping, and Performance Max campaigns built for measurable ROI.</p></div>
+        <div class="service"><div class="svc-icon">📣</div><div class="num">02</div><h3>Meta Ads</h3><p>Full-funnel Facebook and Instagram advertising from cold audiences to loyal customers.</p></div>
+        <div class="service"><div class="svc-icon">⚙️</div><div class="num">03</div><h3>Automation</h3><p>Marketing automation and workflows that nurture leads and save hours on repetitive work.</p></div>
+        <div class="service"><div class="svc-icon">📧</div><div class="num">04</div><h3>Email Marketing</h3><p>Automated sequences and broadcast campaigns that turn subscribers into revenue.</p></div>
+        <div class="service"><div class="svc-icon">💬</div><div class="num">05</div><h3>WhatsApp Marketing</h3><p>Broadcasts, chatbots, and automated flows on WhatsApp that drive fast replies and sales.</p></div>
+        <div class="service"><div class="svc-icon">🔍</div><div class="num">06</div><h3>SEO</h3><p>Build the organic search presence that drives qualified traffic and compounds over time.</p></div>
+        <div class="service"><div class="svc-icon">✨</div><div class="num">07</div><h3>Generative Engine Optimisation</h3><p>Appear in ChatGPT, Perplexity, and Google AI Overviews, not just traditional search.</p></div>
+        <div class="service"><div class="svc-icon">🤖</div><div class="num">08</div><h3>AI Search Optimisation</h3><p>Get cited by AI answer engines as the authority in your space.</p></div>
+        <div class="service"><div class="svc-icon">💻</div><div class="num">09</div><h3>Web Development</h3><p>Performance-first, SEO-ready websites built to rank and convert.</p></div>
+        <div class="service"><div class="svc-icon">📈</div><div class="num">10</div><h3>CRO</h3><p>Convert more of the traffic you already have. The highest-ROI investment you can make.</p></div>
+        <div class="service"><div class="svc-icon">📊</div><div class="num">11</div><h3>Analytics & Tracking</h3><p>Know exactly what's driving your growth with accurate attribution across all channels.</p></div>
+        <div class="service"><div class="svc-icon">✍️</div><div class="num">12</div><h3>Content Marketing</h3><p>Strategic content that builds authority, earns backlinks, and fuels both SEO and GEO growth.</p></div>
       </div>
     </div>
   </section>
